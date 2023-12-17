@@ -2,13 +2,13 @@ import React from 'react'
 
 const Banner = () => {
   return (
-    <div className=' font-poppins max-w-screen-2xl lg:pt-12 container mx-auto xl:px-24 px-4 bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%'>
+    <div className='font-poppins container-section lg:py-10 bg-gradient-to-r from-[#FAFAFA] from-0% to-[#FCFCFC] to-100%'>
       <div className='py-24 flex flex-col md:flex-row-reverse justify-between items-center gap-6'>
         <div className='md:w-1/2'>
           <div className='flex justify-center items-center'>
             {/* Banner Image */}
             <img
-              src='/images/banner.jpg'
+              src='/images/home/banner.jpg'
               alt='banner'
               className='rounded-full w-[420px] h-[420px]'
             />
@@ -17,7 +17,7 @@ const Banner = () => {
             {/* Banner small cards */}
             <div className='flex items-center px-3 py-2 rounded-2xl gap-3 w-64 shadow bg-white'>
               <img
-                src='/images/fried Rice.jpg'
+                src='/images/home/fried Rice.jpg'
                 alt='Fried Rice'
                 className=' rounded-2xl w-[80px] h-[80px]'
               />
@@ -57,7 +57,7 @@ const Banner = () => {
             </div>
             <div className='md:flex hidden items-center px-3 py-2 rounded-2xl gap-3 w-64 shadow bg-white'>
               <img
-                src='/images/noodles.jpg'
+                src='/images/home/noodles.jpg'
                 alt='Fried Rice'
                 className=' rounded-2xl w-[80px] h-[80px]'
               />

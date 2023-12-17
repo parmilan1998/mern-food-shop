@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Logo from '/logo.png'
+// import Logo from '/logo.png'
 import { BiPhoneCall } from 'react-icons/bi'
 
 const Navbar = () => {

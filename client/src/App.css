@@ -1,0 +1,9 @@
+.container-section {
+  @apply container max-w-screen-2xl lg:px-24 px-4 font-poppins mx-auto;
+}
+.sub-title {
+  @apply text-xl font-medium text-red-500 uppercase tracking-wide;
+}
+.title {
+  @apply text-4xl md:text-5xl font-poppins leading-snug font-bold;
+}
