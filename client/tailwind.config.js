@@ -16,7 +16,10 @@ export default {
         primaryRed: '#FF6868',
         secondary: '#555',
         primaryWhite: '#FCFCFC',
-        secondaryColor: '#4A4A4A'
+        secondaryColor: '#4A4A4A',
+        primaryBlue: '#8873ef',
+        headingColor: '#081e21',
+        smallTextColor: '#193256',
       },
     },
   },

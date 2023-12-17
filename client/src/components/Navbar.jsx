@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Logo from '/logo.png'
 import { BiPhoneCall } from 'react-icons/bi'
 
 const Navbar = () => {
+  const [isSticky, setSticky] = useState(false)
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY
+      if (offset > 0) {
+        setSticky(true)
+      } else {
+        setSticky(false)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.addEventListener('scroll', handleScroll)
+    }
+  }, [])
   const navItem = (
     <>
       <li>
@@ -46,8 +61,14 @@ const Navbar = () => {
     </>
   )
   return (
-    <header className='max-w-screen-2xl container mx-auto py-1'>
-      <div className='navbar lg:px-24 font-poppins'>
+    <header className='max-w-screen-2xl fixed font-poppins container mx-auto z-50 top-0 left-0 right-0 transition-all ease-in-out duration-300'>
+      <div
+        className={`navbar lg:px-24 ${
+          isSticky
+            ? ' bg-base-200 shadow-sm transition-all ease-in-out duration-300'
+            : ''
+        }`}
+      >
         <div className='navbar-start'>
           <div className='dropdown'>
             <div tabIndex={0} role='button' className='btn btn-ghost lg:hidden'>
@@ -74,7 +95,7 @@ const Navbar = () => {
             </ul>
           </div>
           <a className='font-bold text-xl cursor-pointer' href='/'>
-            <span className='text-white bg-primaryGreen px-2 py-1 rounded-lg font-inter'>
+            <span className='text-white bg-primaryBlue px-2 py-1 rounded-lg font-inter'>
               MD
             </span>{' '}
             Kitchen
@@ -125,7 +146,7 @@ const Navbar = () => {
               <span className='badge badge-sm indicator-item'>8</span>
             </div>
           </div>
-          <a className='flex justify-center items-center gap-2 cursor-pointer px-4 py-2 bg-primaryGreen rounded-full text-white font-bold hover:bg-neutral-400 ease-in duration-300'>
+          <a className='flex justify-center items-center gap-2 cursor-pointer px-4 py-2 bg-primaryBlue rounded-full text-white font-bold hover:bg-neutral-400 ease-in duration-300'>
             <BiPhoneCall />
             Contact
           </a>
