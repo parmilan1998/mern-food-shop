@@ -29,27 +29,32 @@ const Banner = () => {
                     type='radio'
                     name='rating-2'
                     className='mask mask-star-2 bg-yellow-400'
+                    readOnly
                   />
                   <input
                     type='radio'
                     name='rating-2'
                     className='mask mask-star-2 bg-yellow-400'
                     checked
+                    readOnly
                   />
                   <input
                     type='radio'
                     name='rating-2'
                     className='mask mask-star-2 bg-yellow-400'
+                    readOnly
                   />
                   <input
                     type='radio'
                     name='rating-2'
                     className='mask mask-star-2 bg-yellow-400'
+                    readOnly
                   />
                   <input
                     type='radio'
                     name='rating-2'
                     className='mask mask-star-2 bg-yellow-400'
+                    readOnly
                   />
                 </div>
                 <p>Rs.999.00</p>
@@ -69,27 +74,32 @@ const Banner = () => {
                     type='radio'
                     name='rating-2'
                     className='mask mask-star-2 bg-yellow-400'
+                    readOnly
                   />
                   <input
                     type='radio'
                     name='rating-2'
                     className='mask mask-star-2 bg-yellow-400'
                     checked
+                    readOnly
                   />
                   <input
                     type='radio'
                     name='rating-2'
                     className='mask mask-star-2 bg-yellow-400'
+                    readOnly
                   />
                   <input
                     type='radio'
                     name='rating-2'
                     className='mask mask-star-2 bg-yellow-400'
+                    readOnly
                   />
                   <input
                     type='radio'
                     name='rating-2'
                     className='mask mask-star-2 bg-yellow-400'
+                    readOnly
                   />
                 </div>
                 <p>Rs.799.00</p>

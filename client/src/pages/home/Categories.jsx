@@ -39,7 +39,7 @@ const Categories = () => {
         {categoriesItems.map((item, index) => (
           <div
             key={index}
-            className='shadow-md rounded-md text-white p-5 w-72 cursor-pointer hover:-translate-y-1 transition-all duration-300'
+            className='shadow-lg rounded-md text-white p-5 w-72 cursor-pointer hover:-translate-y-1 transition-all duration-300'
           >
             <div className='flex justify-center items-center mx-auto'>
               <img
