@@ -10,8 +10,8 @@ const Cards = ({ item }) => {
     setIsHeartFill(!isHeartFill)
   }
   return (
-    <div className='my-5'>
-      <div className='card w-[360px] bg-base-100 shadow-xl relative m-5'>
+    <div className='my-2'>
+      <div className='card w-[280px] bg-base-100 shadow-xl relative m-2'>
         <div
           className={` z-10 rating gap-1 absolute right-2 top-2 p-4 heartStar bg-primaryBlue hover:bg-neutral-600 rounded-full font-semibold ${
             isHeartFill ? 'text-rose-600' : 'text-white'
@@ -25,7 +25,7 @@ const Cards = ({ item }) => {
             <img
               src={Receipe}
               alt='Shoes'
-              className='hover:scale-100 transition-all duration-200 md:h-72 py-6 px-2'
+              className='hover:scale-100 transition-all duration-200 md:h-48 py-6 px-2'
             />
           </figure>
         </Link>
@@ -39,7 +39,7 @@ const Cards = ({ item }) => {
               <span className='text-sm text-red-500'>$</span>
               {item.price}
             </h5>
-            <button className='btn bg-primaryBlue text-white hover:bg-gray-600'>Add Cart</button>
+            <button className='px-4 py-2 rounded-full bg-primaryBlue text-white hover:bg-gray-600'>Add Cart</button>
           </div>
         </div>
       </div>

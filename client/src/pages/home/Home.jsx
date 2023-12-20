@@ -12,7 +12,7 @@ const Home = () => {
       <Categories />
       <SpecialDishes />
       <Testimonial />
-      <Services/>
+      <Services />
     </>
   )
 }
