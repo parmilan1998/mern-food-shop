@@ -56,7 +56,7 @@ const Services = () => {
               >
                 <img src={service.image} alt='Service' className='mx-auto' />
                 <h4 className='py-2 font-semibold text-xl'>{service.title}</h4>
-                <p className=' tracking-wide'>{service.des}</p>
+                <p className='tracking-wide leading-7'>{service.des}</p>
               </div>
             ))}
           </div>
