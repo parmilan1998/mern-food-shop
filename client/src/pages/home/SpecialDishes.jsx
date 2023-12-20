@@ -12,7 +12,7 @@ const previousButton = (props) => {
   return (
     <div
       className={className}
-      style={{ ...style, display: 'block', background: 'green' }}
+      style={{ ...style, display: 'block' }}
       onClick={onClick}
     />
   )
@@ -24,7 +24,7 @@ const nextButton = (props) => {
   return (
     <div
       className={className}
-      style={{ ...style, display: 'block', background: 'red' }}
+      style={{ ...style, display: 'block' }}
       onClick={onClick}
     />
   )
