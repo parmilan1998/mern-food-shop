@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaHeart } from 'react-icons/fa'
-import Receipe from '../../public/receipe.png'
+import Receipe from '/receipe.png'
 
 const Cards = ({ item }) => {
   const [isHeartFill, setIsHeartFill] = useState(false)
@@ -39,7 +39,9 @@ const Cards = ({ item }) => {
               <span className='text-sm text-red-500'>$</span>
               {item.price}
             </h5>
-            <button className='px-4 py-2 rounded-full bg-primaryBlue text-white hover:bg-gray-600'>Add Cart</button>
+            <button className='px-4 py-2 rounded-full bg-primaryBlue text-white hover:bg-gray-600'>
+              Add Cart
+            </button>
           </div>
         </div>
       </div>
