@@ -11,7 +11,7 @@ const Cards = ({ item }) => {
   }
   return (
     <div className='my-2'>
-      <div className='card w-[280px] bg-base-100 shadow-xl relative m-2'>
+      <div className='flex justify-center card w-[280px] bg-base-100 shadow-xl relative m-2'>
         <div
           className={` z-10 rating gap-1 absolute right-2 top-2 p-4 heartStar bg-primaryBlue hover:bg-neutral-600 rounded-full font-semibold ${
             isHeartFill ? 'text-rose-600' : 'text-white'

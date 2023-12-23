@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Cards from '../../components/Cards'
+import { FaFilter } from 'react-icons/fa'
 
 const Menu = () => {
   const [menu, setMenu] = useState([])
   const [filteredItems, setFilteredItems] = useState([])
   const [selectCategory, setSelectCategory] = useState('all') // Category Selection default = all
   const [sortOption, setSortOption] = useState('default') // sorting option = default
+  const [currentPage, setCurrentPage] = useState(1)
+  const [itemPerPage] = useState(8)
 
   // Fetch Data
   useEffect(() => {
@@ -31,12 +34,14 @@ const Menu = () => {
         : menu.filter((item) => item.category === category)
     setFilteredItems(filtered)
     setSelectCategory(category)
+    setCurrentPage(1)
   }
 
   // ShowAll data
   const showAll = () => {
     setFilteredItems(menu)
     setSelectCategory('all')
+    setCurrentPage(1)
   }
 
   // Sorting data
@@ -60,7 +65,14 @@ const Menu = () => {
         break
     }
     setFilteredItems(sortItems)
+    setCurrentPage(1)
   }
+
+  // Pagination
+  const indexOfLastItem = currentPage * itemPerPage
+  const indexOfFirstItem = indexOfLastItem - itemPerPage // Fix the typo here
+  const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem)
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
   return (
     <div>
@@ -84,13 +96,113 @@ const Menu = () => {
             </button>
           </div>
         </div>
-        <div className=''>
-          <div>Filter and Sorting Section</div>
-          <div className='grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4'>
-            {filteredItems.map((item) => (
-              <Cards key={item._id} item={item} />
-            ))}
+        <div className='flex flex-col md:flex-row md:justify-between items-center'>
+          {/* Category Button */}
+          <div className='flex flex-row justify-start md:item-center md:gap-8 gap-8 flex-wrap text-lg font-medium my-10'>
+            <button
+              onClick={showAll}
+              className={
+                selectCategory === 'all'
+                  ? 'underline underline-offset-4 text-primaryBlue'
+                  : ''
+              }
+            >
+              All
+            </button>
+            <button
+              onClick={() => filterItems('salad')}
+              className={
+                selectCategory === 'salad'
+                  ? 'underline underline-offset-4 text-primaryBlue'
+                  : ''
+              }
+            >
+              Salad
+            </button>
+            <button
+              onClick={() => filterItems('soup')}
+              className={
+                selectCategory === 'soup'
+                  ? 'underline underline-offset-4 text-primaryBlue'
+                  : ''
+              }
+            >
+              Soups
+            </button>
+            <button
+              onClick={() => filterItems('pizza')}
+              className={
+                selectCategory === 'pizza'
+                  ? 'underline underline-offset-4 text-primaryBlue'
+                  : ''
+              }
+            >
+              Pizza
+            </button>
+            <button
+              onClick={() => filterItems('dessert')}
+              className={
+                selectCategory === 'dessert'
+                  ? 'underline underline-offset-4 text-primaryBlue'
+                  : ''
+              }
+            >
+              Desserts
+            </button>
+            <button
+              onClick={() => filterItems('drinks')}
+              className={
+                selectCategory === 'drinks'
+                  ? 'underline underline-offset-4 text-primaryBlue'
+                  : ''
+              }
+            >
+              Drinks
+            </button>
           </div>
+          {/* Sorting Option */}
+          <div>
+            <div className='flex justify-end items-center gap-2 my-10'>
+              <FaFilter />
+              <select
+                name='sort'
+                id='sort'
+                value={sortOption}
+                onChange={(e) => handleSortChange(e.target.value)}
+                className='px-2 py-1 rounded-md text-white bg-neutral-600'
+              >
+                <option value='default'>Default</option>
+                <option value='A-Z'>A-Z</option>
+                <option value='Z-A'>Z-A</option>
+                <option value='low-to-high'>Low To High</option>
+                <option value='high-to-low'>High To Low</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        {/* Pagination  */}
+
+        <div className='grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4'>
+          {currentItems.map((item) => (
+            <Cards key={item._id} item={item} />
+          ))}
+        </div>
+        <div className='flex justify-center my-8'>
+          {Array.from({
+            length: Math.ceil(filteredItems.length / itemPerPage),
+          }).map((_, index) => (
+            <button
+              key={index + 1}
+              onClick={() => paginate(index + 1)}
+              className={`mx-2 px-3 py-1 rounded-full ${
+                currentPage === index + 1
+                  ? 'text-white bg-primaryBlue'
+                  : 'bg-neutral-300'
+              }`}
+            >
+              {index + 1}
+            </button>
+          ))}
         </div>
       </div>
     </div>
