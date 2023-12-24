@@ -1,16 +1,65 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react'
+import React, { useState } from 'react'
 import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import { useContext } from 'react'
+import { AuthContext } from '../contexts/AuthProvider'
+import { toast } from 'react-toastify'
 
 const Modal = () => {
+  const [errorMessage, setErrorMessage] = useState('')
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const onSubmit = (data) => console.log(data)
+
+  // Redirect to specific location
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
+
+  // UseContext
+  const { signUpWithGmail, login } = useContext(AuthContext)
+
+  // Login with email and password
+  const onSubmit = (data) => {
+    const email = data.email
+    const password = data.password
+    login(email, password)
+      .then((res) => {
+        const user = res.user
+        alert('User login successfully')
+        document.getElementById('my_modal_5').close()
+        navigate('/') // redirect to the home page after login using email and password
+      })
+      .catch((error) => {
+        const errorMessage = error.message
+        setErrorMessage('Please a enter the correct email & password.')
+      })
+  }
+
+  // Login with Gmail
+  const handleLogin = () => {
+    signUpWithGmail()
+      .then((res) => {
+        const user = res.user
+        alert('User registered successfully')
+        navigate('/') // redirect to home page after login using gmail
+        // toast.success('🦄 User registered successfully', {
+        //   position: 'top-center',
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        //   theme: 'colored',
+        // })
+      })
+      .catch((error) => console.log(error))
+  }
   return (
     <div>
       <dialog id='my_modal_5' className='modal modal-middle sm:modal-middle'>
@@ -51,6 +100,13 @@ const Modal = () => {
                   </a>
                 </label>
               </div>
+              {/* Erroe Message */}
+              {errorMessage ? (
+                <p className='text-red-500 text-center italic text-base'>
+                  {errorMessage}
+                </p>
+              ) : null}
+
               <div className='form-control mt-4'>
                 <input
                   type='submit'
@@ -76,7 +132,10 @@ const Modal = () => {
               </button>
             </form>
             <div className='text-center space-x-2 mb-3'>
-              <button className='btn btn-circle hover:bg-primaryBlue hover:text-white'>
+              <button
+                className='btn btn-circle hover:bg-primaryBlue hover:text-white'
+                onClick={handleLogin}
+              >
                 <FaGoogle />
               </button>
               <button className='btn btn-circle hover:bg-primaryBlue hover:text-white'>

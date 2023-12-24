@@ -1,9 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react'
+import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Modal from './Modal'
+import { AuthContext } from '../contexts/AuthProvider'
 
 const Signup = () => {
   const {
@@ -11,7 +12,32 @@ const Signup = () => {
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const onSubmit = (data) => console.log(data)
+
+  // Redirect to specific location
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
+
+  const { createUser } = useContext(AuthContext)
+
+  // Create a new user
+  const onSubmit = (data, event) => {
+    event.preventDefault()
+    const email = data.email
+    const password = data.password
+    createUser(email, password)
+      .then((res) => {
+        const user = res.user
+        alert('User created successfully')
+        document.getElementById('my_modal_5').close()
+        navigate('/')
+      })
+      .catch((error) => {
+        const errorCode = error.code
+        const errorMessage = error.message
+        console.error('Registration error:', errorCode, errorMessage)
+      })
+  }
   return (
     <div className='max-w-md w-full mx-auto shadow-md py-6 rounded-lg flex justify-center my-20'>
       <div className='modal-action flex flex-col mt-0 font-poppins'>
@@ -53,7 +79,7 @@ const Signup = () => {
           <div className='form-control mt-4'>
             <input
               type='submit'
-              value='Login'
+              value='Sign Up'
               className='btn bg-primaryBlue text-white hover:bg-neutral-400 ease-in duration-300'
             />
           </div>
