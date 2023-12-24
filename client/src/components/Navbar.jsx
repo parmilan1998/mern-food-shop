@@ -3,6 +3,7 @@ import { BiPhoneCall } from 'react-icons/bi'
 import { FaUser } from 'react-icons/fa'
 import Modal from './Modal'
 import { AuthContext } from '../contexts/AuthProvider'
+import Profile from './Profile'
 
 const Navbar = () => {
   const { user } = useContext(AuthContext)
@@ -150,14 +151,22 @@ const Navbar = () => {
               <span className='badge badge-sm indicator-item'>8</span>
             </div>
           </div>
-          <button
-            onClick={() => document.getElementById('my_modal_5').showModal()}
-            className='flex justify-center items-center gap-2 cursor-pointer px-5 py-2 bg-primaryBlue rounded-full text-white font-bold hover:bg-neutral-400 ease-in duration-300'
-          >
-            <FaUser />
-            Login
-          </button>
-          <Modal />
+          {user ? (
+            <Profile user={user} />
+          ) : (
+            <div>
+              <button
+                onClick={() =>
+                  document.getElementById('my_modal_5').showModal()
+                }
+                className='flex justify-center items-center gap-2 cursor-pointer px-5 py-2 bg-primaryBlue rounded-full text-white font-bold hover:bg-neutral-400 ease-in duration-300'
+              >
+                <FaUser />
+                Login
+              </button>
+              <Modal />
+            </div>
+          )}
         </div>
       </div>
     </header>

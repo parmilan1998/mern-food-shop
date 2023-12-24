@@ -36,15 +36,15 @@ const AuthProvider = ({ children }) => {
   }
 
   // logout
-  const logout = () => {
+  const logOut = () => {
     return signOut(auth)
   }
 
   // Update user profile
-  const updateUserProfile = (name, photoUrl) => {
+  const updateUserProfile = (name, photoURL) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
-      photoURL: photoUrl,
+      photoURL: photoURL,
     })
   }
 
@@ -53,6 +53,7 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         setUser(currentUser)
+        setLoading(false)
       } else {
         // User is signed out
       }
@@ -67,8 +68,9 @@ const AuthProvider = ({ children }) => {
     createUser,
     signUpWithGmail,
     login,
-    logout,
+    logOut,
     updateUserProfile,
+    loading,
   }
 
   return (

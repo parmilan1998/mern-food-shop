@@ -1,18 +1,35 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { AuthContext } from '../contexts/AuthProvider'
+import Loader from '../components/Loader'
 
 const Layout = () => {
+  const { loading } = useContext(AuthContext)
   return (
     <>
-      <Navbar />
+      {loading ? (
+        <Loader />
+      ) : (
         <div>
-        <Outlet/>
+          <Navbar />
+          <Outlet />
+          <Footer />
         </div>
-      <Footer />
+      )}
     </>
   )
 }
 
 export default Layout
+
+// {loading ? (
+//   <Loader />
+// ) : (
+//   <div>
+//     <Navbar />
+//     <Outlet />
+//     <Footer />
+//   </div>
+// )}
