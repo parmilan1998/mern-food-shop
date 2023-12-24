@@ -15,7 +15,7 @@ const Modal = () => {
     <div>
       <dialog id='my_modal_5' className='modal modal-middle sm:modal-middle'>
         <div className='modal-box'>
-          <div className='modal-action mt-0 font-poppins'>
+          <div className='modal-action flex flex-col mt-0 font-poppins'>
             <form
               onSubmit={handleSubmit(onSubmit)}
               className='card-body'
@@ -67,18 +67,25 @@ const Modal = () => {
                   Signup Now
                 </Link>
               </p>
+              <button
+                htmlFor='my_modal_5'
+                onClick={() => document.getElementById('my_modal_5').close()}
+                className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'
+              >
+                ✕
+              </button>
             </form>
-          </div>
-          <div className='flex flex-row justify-center gap-4 mb-3'>
-            <button className='btn btn-circle hover:bg-primaryBlue hover:text-white'>
-              <FaGoogle />
-            </button>
-            <button className='btn btn-circle hover:bg-primaryBlue hover:text-white'>
-              <FaFacebookF />
-            </button>
-            <button className='btn btn-circle hover:bg-primaryBlue hover:text-white'>
-              <FaGithub />
-            </button>
+            <div className='text-center space-x-2 mb-3'>
+              <button className='btn btn-circle hover:bg-primaryBlue hover:text-white'>
+                <FaGoogle />
+              </button>
+              <button className='btn btn-circle hover:bg-primaryBlue hover:text-white'>
+                <FaFacebookF />
+              </button>
+              <button className='btn btn-circle hover:bg-primaryBlue hover:text-white'>
+                <FaGithub />
+              </button>
+            </div>
           </div>
         </div>
       </dialog>
