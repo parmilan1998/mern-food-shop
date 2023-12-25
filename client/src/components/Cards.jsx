@@ -23,9 +23,9 @@ const Cards = ({ item }) => {
         <Link to={`/menu/${item._id}`}>
           <figure>
             <img
-              src={Receipe}
+              src={item.image}
               alt='Shoes'
-              className='hover:scale-100 transition-all duration-200 md:h-48 py-6 px-2'
+              className='hover:scale-100 transition-all duration-200 md:h-48 py-6 px-2 rounded-full'
             />
           </figure>
         </Link>

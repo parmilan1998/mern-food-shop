@@ -3,7 +3,7 @@
         "_id": "642c155b2c4774f05c36eeaa",
         "name": "Haddock",
         "recipe": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
-        "image": "/images/recipes/img1.png",
+        "image": "https://images.immediate.co.uk/production/volatile/sites/30/2022/06/Epic-summer-salad-3aeb697.jpg?resize=768,574",
         "category": "salad",
         "price": 14.7
     },
@@ -11,7 +11,7 @@
         "_id": "642c155b2c4774f05c36eeb9",
         "name": "Haddock",
         "recipe": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
-        "image": "/images/recipes/img2.png",
+        "image": "https://images.immediate.co.uk/production/volatile/sites/30/2023/03/Coriander-juice-b2b9436.jpg?quality=90&resize=556,505",
         "category": "drinks",
         "price": 14.7
     },
@@ -27,7 +27,7 @@
         "_id": "642c155b2c4774f05c36ee88",
         "name": "Escalope de Veau",
         "recipe": "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette",
-        "image": "/images/recipes/img1.png",
+        "image": "https://www.foodandwine.com/thmb/ckc6L6xKox0WfpfO6dMkuVGPQOY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Angel-Food-Cake-with-Three-Berry-Compote-FT-RECIPE0323-541a780b871441e0ab14383ee38acc44.jpg",
         "category": "dessert",
         "price": 12.5
     },
@@ -75,7 +75,7 @@
         "_id": "642c155b2c4774f05c36ee94",
         "name": "Escalope de Veau",
         "recipe": "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette",
-        "image": "/images/recipes/img1.png",
+        "image": "https://www.foodandwine.com/thmb/Wd4lBRZz3X_8qBr69UOu2m7I2iw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/classic-cheese-pizza-FT-RECIPE0422-31a2c938fc2546c9a07b7011658cfd05.jpg",
         "category": "pizza",
         "price": 12.5
     },
@@ -91,7 +91,7 @@
         "_id": "642c155b2c4774f05c36eea6",
         "name": "Chicken and Walnut Salad",
         "recipe": "Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus",
-        "image": "/images/recipes/img3.png",
+        "image": "https://images.immediate.co.uk/production/volatile/sites/30/2022/06/Epic-summer-salad-3aeb697.jpg?resize=768,574",
         "category": "salad",
         "price": 13.5
     },
@@ -100,7 +100,7 @@
         "name": "Escalope de Veau",
         "recipe": "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette",
         "image": "/images/recipes/img1.png",
-        "category": "soup",
+        "category": "https://myfoodstory.com/wp-content/uploads/2017/12/Homemade-Creamy-Vegetable-Soup-2-1.jpg",
         "price": 12.5
     },
     {

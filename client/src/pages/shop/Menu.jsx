@@ -14,7 +14,7 @@ const Menu = () => {
   useEffect(() => {
     const FetchData = async () => {
       try {
-        const response = await fetch('/menu.json') // Json data file
+        const response = await fetch('http://localhost:5000/menu') // Json data file
         const data = await response.json()
         // console.log(data)
         setMenu(data)
