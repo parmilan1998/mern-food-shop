@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { AuthContext } from '../../contexts/AuthProvider'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const UpdateProfile = () => {
   const { updateUserProfile } = useContext(AuthContext)
@@ -22,7 +23,17 @@ const UpdateProfile = () => {
     const photoURL = data.photoURL
     updateUserProfile(name, photoURL)
       .then(() => {
-        alert('Profile updated successfully')
+        // alert('Profile updated successfully')
+        toast.success('User Profile Update successfully', {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+        })
         navigate(from, { replace: true })
       })
       .catch((error) => {

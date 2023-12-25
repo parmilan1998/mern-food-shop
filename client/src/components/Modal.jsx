@@ -33,6 +33,16 @@ const Modal = () => {
         alert('User login successfully')
         document.getElementById('my_modal_5').close()
         navigate('/') // redirect to the home page after login using email and password
+        toast.success(`🦄 User Login successfully`, {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+        })
       })
       .catch((error) => {
         const errorMessage = error.message
@@ -47,16 +57,16 @@ const Modal = () => {
         const user = res.user
         alert('User registered successfully')
         navigate('/') // redirect to home page after login using gmail
-        // toast.success('🦄 User registered successfully', {
-        //   position: 'top-center',
-        //   autoClose: 5000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        //   theme: 'colored',
-        // })
+        toast.success('🦄 User registered successfully', {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+        })
       })
       .catch((error) => console.log(error))
   }

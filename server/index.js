@@ -28,13 +28,30 @@ async function run() {
   try {
     await client.connect()
     // Database and collection
-    const menuCollection = client.db("md-kitchen-restaurant").collection("menu")
-    const cartCollection = client.db("md-kitchen-restaurant").collection("cartItems")
+    const menuCollection = client.db('md-kitchen-restaurant').collection('menu')
+    const cartCollection = client
+      .db('md-kitchen-restaurant')
+      .collection('cartItems')
 
     // All the menu items operations
-    app.get("/menu", async(req,res)=>{
-        const result = await menuCollection.find().toArray()
-        res.send(result)
+    app.get('/menu', async (req, res) => {
+      const result = await menuCollection.find().toArray()
+      res.send(result)
+    })
+
+    // Post the cart items
+    app.post('/carts', async (req, res) => {
+      const cartItems = req.body
+      const result = await cartCollection.insertOne(cartItems)
+      res.send(result)
+    })
+
+    // Get the carts items
+    app.get('/carts', async (req, res) => {
+      const email = req.query.email
+      const filter = { email: email }
+      const result = await cartCollection.find(filter).toArray()
+      res.send(result)
     })
 
     await client.db('admin').command({ ping: 1 })

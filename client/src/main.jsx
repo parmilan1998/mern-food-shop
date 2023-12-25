@@ -4,6 +4,7 @@ import './App.css'
 import { RouterProvider } from 'react-router-dom'
 import router from './router/Router.jsx'
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import AuthProvider from './contexts/AuthProvider.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

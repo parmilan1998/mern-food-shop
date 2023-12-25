@@ -1,13 +1,73 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FaHeart } from 'react-icons/fa'
 import Receipe from '/receipe.png'
+import { AuthContext } from '../contexts/AuthProvider'
+import { toast } from 'react-toastify'
+import Swal from 'sweetalert2'
 
 const Cards = ({ item }) => {
+  const { _id, name, price, recipe, image, category } = item
+  const { user } = useContext(AuthContext)
   const [isHeartFill, setIsHeartFill] = useState(false)
   const handleHeartClick = () => {
     setIsHeartFill(!isHeartFill)
+  }
+
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  // Add to Cart
+  const handleAddToCart = () => {
+    // console.log('Add button clicked', item)
+    if (user && user?.email) {
+      const cartItem = {
+        menuItemId: _id,
+        name,
+        price,
+        recipe,
+        category,
+        email: user.email,
+      }
+      console.log(cartItem)
+
+      fetch('http://localhost:5000/carts', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(cartItem),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data)
+          toast.success('Item Add To Cart Successfully.', {
+            position: 'top-center',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'colored',
+          })
+        })
+    } else {
+      Swal.fire({
+        title: 'Please Login Now?',
+        text: "Without an account can't able to add the product!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'SignUp Now',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/signup')
+        }
+      })
+    }
   }
   return (
     <div className='my-2'>
@@ -39,7 +99,10 @@ const Cards = ({ item }) => {
               <span className='text-sm text-red-500'>$</span>
               {item.price}
             </h5>
-            <button className='px-4 py-2 rounded-full bg-primaryBlue text-white hover:bg-gray-600'>
+            <button
+              onClick={() => handleAddToCart(item)}
+              className='px-4 py-2 rounded-full bg-primaryBlue text-white hover:bg-gray-600'
+            >
               Add Cart
             </button>
           </div>

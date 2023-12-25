@@ -9,15 +9,17 @@ const Layout = () => {
   const { loading } = useContext(AuthContext)
   return (
     <>
-      {loading ? (
+      {/* {loading ? (
         <Loader />
-      ) : (
+      ) : ( */}
         <div>
           <Navbar />
-          <Outlet />
+          <div className='min-h-screen'>
+            <Outlet />
+          </div>
           <Footer />
         </div>
-      )}
+      {/* )} */}
     </>
   )
 }

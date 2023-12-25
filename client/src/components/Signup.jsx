@@ -5,6 +5,7 @@ import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Modal from './Modal'
 import { AuthContext } from '../contexts/AuthProvider'
+import { toast } from 'react-toastify'
 
 const Signup = () => {
   const {
@@ -28,7 +29,17 @@ const Signup = () => {
     createUser(email, password)
       .then((res) => {
         const user = res.user
-        alert('User created successfully')
+        // alert('User created successfully')
+        toast.success('🦄 User Registered successfully', {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+        })
         document.getElementById('my_modal_5').close()
         navigate('/')
       })
